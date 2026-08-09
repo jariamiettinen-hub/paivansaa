@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0048)file:///C:/Users/jaria/Downloads/saa%20(10).html -->
+<!-- saved from url=(0048)file:///C:/Users/jaria/Downloads/saa%20(13).html -->
 <html lang="fi"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -21,6 +21,9 @@
   #ani-canvas{position:absolute;inset:0;width:100%;height:100%}
 
   #ani-overlay{position:relative;z-index:2;text-align:center;pointer-events:none}
+  #ani-paikkakunta{font-family:'Space Grotesk',sans-serif;font-size:clamp(18px,5vw,26px);
+    font-weight:500;color:rgba(255,255,255,.75);letter-spacing:.12em;text-transform:uppercase;
+    margin-bottom:14px;text-shadow:0 2px 16px rgba(0,0,0,.5)}
   #ani-aika{font-family:'Space Grotesk',sans-serif;font-size:clamp(56px,16vw,96px);
     font-weight:700;color:#fff;letter-spacing:-2px;line-height:1;
     text-shadow:0 2px 40px rgba(0,0,0,.6);margin-bottom:8px}
@@ -43,10 +46,10 @@
 
   /* ---- PÄÄSIVU ---- */
   #paasivu{position:fixed;inset:0;overflow-y:auto;opacity:0;transition:opacity .8s ease;
-    display:flex;flex-direction:column;align-items:center;
+    display:none;flex-direction:column;align-items:center;
     padding:env(safe-area-inset-top,24px) 16px 48px;
     padding-top:max(24px,env(safe-area-inset-top))}
-  #paasivu.nakyvissa{opacity:1}
+  #paasivu.nakyvissa{opacity:1;display:flex}
 
   body.sky-aamu {background:linear-gradient(160deg,#1a3a5c 0%,#3d7ab5 50%,#f0a04b 100%)}
   body.sky-paiva{background:linear-gradient(180deg,#1565c0 0%,#1976d2 40%,#42a5f5 100%)}
@@ -129,6 +132,7 @@
 <div id="animaatio" class="pois" style="display: none;">
   <canvas id="ani-canvas" width="1536" height="695"></canvas>
   <div id="ani-overlay">
+    <div id="ani-paikkakunta">Lappeenranta</div>
     <div id="ani-aika">16:00</div>
     <div id="ani-ikoni" style="opacity: 1; transform: scale(1);">☀️</div>
     <div id="ani-lampotila">24°C</div>
@@ -139,7 +143,7 @@
 </div>
 
 <!-- Pääsivu -->
-<div id="paasivu" class="nakyvissa">
+<div id="paasivu" class="nakyvissa" style="display: flex;">
   <div id="stars" style="display: none;"></div>
   <div id="rain" style="display: none;"></div>
   <div id="app">
@@ -156,9 +160,9 @@
     <div id="saa-sisalto" style="display: block;">
       <header>
         <div id="sijainti-rivi" onclick="haeSaa()">📍 <span id="paikka-nimi">Lappeenranta</span></div>
-        <div id="saatila-ikoni">⛅</div>
+        <div id="saatila-ikoni">☁️</div>
         <div id="lampotila-iso">23<sup>°C</sup></div>
-        <div id="saatila-teksti">Puolipilvistä</div>
+        <div id="saatila-teksti">Pilvistä</div>
       </header>
       <div id="kortit">
         <div class="kortti"><div class="ko">Tuntuu kuin</div><div class="kv" id="tuntuu-kuin">21°</div><div class="ky">celsiusta</div></div>
@@ -171,7 +175,7 @@
         <div class="tunnit-scroll"><div class="tunnit-lista" id="tunnit-lista"><div class="tunti-kohta nykyinen"><div class="ta">17:00</div><div class="ti">☁️</div><div class="tl">23°</div></div><div class="tunti-kohta"><div class="ta">18:00</div><div class="ti">☁️</div><div class="tl">22°</div></div><div class="tunti-kohta"><div class="ta">19:00</div><div class="ti">⛅</div><div class="tl">21°</div></div><div class="tunti-kohta"><div class="ta">20:00</div><div class="ti">☀️</div><div class="tl">20°</div></div><div class="tunti-kohta"><div class="ta">21:00</div><div class="ti">🌙</div><div class="tl">19°</div></div><div class="tunti-kohta"><div class="ta">22:00</div><div class="ti">🌙</div><div class="tl">17°</div></div><div class="tunti-kohta"><div class="ta">23:00</div><div class="ti">⛅</div><div class="tl">16°</div></div><div class="tunti-kohta"><div class="ta">00:00</div><div class="ti">☁️</div><div class="tl">15°</div></div><div class="tunti-kohta"><div class="ta">01:00</div><div class="ti">⛅</div><div class="tl">14°</div></div><div class="tunti-kohta"><div class="ta">02:00</div><div class="ti">🌙</div><div class="tl">13°</div></div><div class="tunti-kohta"><div class="ta">03:00</div><div class="ti">🌙</div><div class="tl">13°</div></div><div class="tunti-kohta"><div class="ta">04:00</div><div class="ti">🌙</div><div class="tl">13°</div></div><div class="tunti-kohta"><div class="ta">05:00</div><div class="ti">🌙</div><div class="tl">13°</div></div><div class="tunti-kohta"><div class="ta">06:00</div><div class="ti">⛅</div><div class="tl">13°</div></div><div class="tunti-kohta"><div class="ta">07:00</div><div class="ti">⛅</div><div class="tl">14°</div></div><div class="tunti-kohta"><div class="ta">08:00</div><div class="ti">🌤</div><div class="tl">16°</div></div><div class="tunti-kohta"><div class="ta">09:00</div><div class="ti">⛅</div><div class="tl">18°</div></div><div class="tunti-kohta"><div class="ta">10:00</div><div class="ti">⛅</div><div class="tl">19°</div></div><div class="tunti-kohta"><div class="ta">11:00</div><div class="ti">🌤</div><div class="tl">20°</div></div><div class="tunti-kohta"><div class="ta">12:00</div><div class="ti">☀️</div><div class="tl">22°</div></div><div class="tunti-kohta"><div class="ta">13:00</div><div class="ti">🌤</div><div class="tl">23°</div></div><div class="tunti-kohta"><div class="ta">14:00</div><div class="ti">🌤</div><div class="tl">23°</div></div><div class="tunti-kohta"><div class="ta">15:00</div><div class="ti">🌤</div><div class="tl">24°</div></div><div class="tunti-kohta"><div class="ta">16:00</div><div class="ti">☀️</div><div class="tl">24°</div></div></div></div>
       </div>
       <div id="paivaennuste"><div id="paivat-lista"><div class="paiva-rivi"><div class="pn">Tänään</div><div class="pi">☁️</div><div class="pl"><span class="min">10°</span><span class="max">23°</span></div></div><div class="paiva-rivi"><div class="pn">Huomenna</div><div class="pi">🌧</div><div class="pl"><span class="min">13°</span><span class="max">24°</span></div></div><div class="paiva-rivi"><div class="pn">Ti 11.</div><div class="pi">🌧</div><div class="pl"><span class="min">14°</span><span class="max">20°</span></div></div><div class="paiva-rivi"><div class="pn">Ke 12.</div><div class="pi">☁️</div><div class="pl"><span class="min">12°</span><span class="max">18°</span></div></div><div class="paiva-rivi"><div class="pn">To 13.</div><div class="pi">🌤</div><div class="pl"><span class="min">12°</span><span class="max">18°</span></div></div><div class="paiva-rivi"><div class="pn">Pe 14.</div><div class="pi">☁️</div><div class="pl"><span class="min">12°</span><span class="max">20°</span></div></div><div class="paiva-rivi"><div class="pn">La 15.</div><div class="pi">🌦</div><div class="pl"><span class="min">14°</span><span class="max">24°</span></div></div></div></div>
-      <div id="paivitetty">Päivitetty 16.06</div>
+      <div id="paivitetty">Päivitetty 16.22</div>
     </div>
   </div>
 </div>
@@ -225,14 +229,17 @@ function ohitaAnimaatio(){
 function lopetaAnimaatio(){
   if(aniRAF){cancelAnimationFrame(aniRAF);aniRAF=null;}
   var ani=document.getElementById('animaatio');
+  var paa=document.getElementById('paasivu');
+  paa.style.display='flex';
+  // Pakota reflow ennen opacity-siirtymää
+  void paa.offsetWidth;
+  paa.classList.add('nakyvissa');
   ani.classList.add('pois');
-  document.getElementById('paasivu').classList.add('nakyvissa');
   document.body.style.overflow='';
-  document.getElementById('paasivu').style.overflow='';
   setTimeout(function(){ani.style.display='none';},900);
 }
 
-function kaynnista24hAnimaatio(frames){
+function kaynnista24hAnimaatio(frames,paikkakunta){
   aniData=frames;
   aniValmis=true;
 
@@ -425,6 +432,7 @@ function kaynnista24hAnimaatio(frames){
   }
 
   // Aseta ensimmäinen frame heti
+  document.getElementById('ani-paikkakunta').textContent=paikkakunta||'';
   var f0=aniData[0];
   document.getElementById('ani-aika').textContent=String(f0.tunti).padStart(2,'0')+':00';
   document.getElementById('ani-ikoni').textContent=f0.ikoni;
@@ -597,7 +605,7 @@ function naytaSaa(d,paikka){
   document.getElementById('saa-sisalto').style.display='block';
 
   // Käynnistä animaatio
-  if(aniFrames.length>0) kaynnista24hAnimaatio(aniFrames);
+  if(aniFrames.length>0) kaynnista24hAnimaatio(aniFrames,paikka);
   else lopetaAnimaatio();
 }
 
