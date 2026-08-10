@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0048)file:///C:/Users/jaria/Downloads/saa%20(13).html -->
+<!-- saved from url=(0048)file:///C:/Users/jaria/Downloads/saa%20(14).html -->
 <html lang="fi"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -126,30 +126,30 @@
   #saa-sisalto{display:none}
 </style>
 </head>
-<body class="sky-pilvi">
+<body class="sky-aamu">
 
 <!-- Animaationäyttö -->
-<div id="animaatio" class="pois" style="display: none;">
+<div id="animaatio" style="display: none; opacity: 0; transition: opacity 0.8s;">
   <canvas id="ani-canvas" width="1536" height="695"></canvas>
   <div id="ani-overlay">
     <div id="ani-paikkakunta">Lappeenranta</div>
-    <div id="ani-aika">16:00</div>
-    <div id="ani-ikoni" style="opacity: 1; transform: scale(1);">☀️</div>
-    <div id="ani-lampotila">24°C</div>
-    <div id="ani-kuvaus">Selkeää</div>
+    <div id="ani-aika">07:00</div>
+    <div id="ani-ikoni">⛅</div>
+    <div id="ani-lampotila">15°C</div>
+    <div id="ani-kuvaus">Puolipilvistä</div>
   </div>
   <div id="ani-edistyminen"><div id="ani-palkki" style="width: 100%;"></div></div>
   <div id="ani-ohita" onclick="ohitaAnimaatio()">Ohita ›</div>
 </div>
 
 <!-- Pääsivu -->
-<div id="paasivu" class="nakyvissa" style="display: flex;">
+<div id="paasivu" style="display: flex; opacity: 1;">
   <div id="stars" style="display: none;"></div>
   <div id="rain" style="display: none;"></div>
   <div id="app">
     <div id="lataus" style="display: none;">
       <div id="lataus-pyori"></div>
-      <div id="lataus-teksti">Haetaan sijaintia…</div>
+      <div id="lataus-teksti">Haetaan säätietoja…</div>
     </div>
     <div id="virhe" style="display: none;">
       <div id="virhe-ikoni">⚠️</div>
@@ -160,27 +160,28 @@
     <div id="saa-sisalto" style="display: block;">
       <header>
         <div id="sijainti-rivi" onclick="haeSaa()">📍 <span id="paikka-nimi">Lappeenranta</span></div>
-        <div id="saatila-ikoni">☁️</div>
-        <div id="lampotila-iso">23<sup>°C</sup></div>
-        <div id="saatila-teksti">Pilvistä</div>
+        <div id="saatila-ikoni">⛅</div>
+        <div id="lampotila-iso">14<sup>°C</sup></div>
+        <div id="saatila-teksti">Puolipilvistä</div>
       </header>
       <div id="kortit">
-        <div class="kortti"><div class="ko">Tuntuu kuin</div><div class="kv" id="tuntuu-kuin">21°</div><div class="ky">celsiusta</div></div>
-        <div class="kortti"><div class="ko">Kosteus</div><div class="kv" id="kosteus">47%</div><div class="ky">suhteellinen</div></div>
-        <div class="kortti"><div class="ko">Tuuli</div><div class="kv" id="tuuli">4.6 m/s</div><div class="ky" id="tuuli-suunta">LE</div></div>
-        <div class="kortti"><div class="ko">Sadesumma</div><div class="kv" id="sade">0.0 mm</div><div class="ky">mm tänään</div></div>
+        <div class="kortti"><div class="ko">Tuntuu kuin</div><div class="kv" id="tuntuu-kuin">13°</div><div class="ky">celsiusta</div></div>
+        <div class="kortti"><div class="ko">Kosteus</div><div class="kv" id="kosteus">88%</div><div class="ky">suhteellinen</div></div>
+        <div class="kortti"><div class="ko">Tuuli</div><div class="kv" id="tuuli">3.9 m/s</div><div class="ky" id="tuuli-suunta">E</div></div>
+        <div class="kortti"><div class="ko">Sadesumma</div><div class="kv" id="sade">0.8 mm</div><div class="ky">mm tänään</div></div>
       </div>
       <div id="tuntiennuste">
         <div class="ko" style="margin-bottom:10px;padding:0 4px">Tuntikohtainen</div>
-        <div class="tunnit-scroll"><div class="tunnit-lista" id="tunnit-lista"><div class="tunti-kohta nykyinen"><div class="ta">17:00</div><div class="ti">☁️</div><div class="tl">23°</div></div><div class="tunti-kohta"><div class="ta">18:00</div><div class="ti">☁️</div><div class="tl">22°</div></div><div class="tunti-kohta"><div class="ta">19:00</div><div class="ti">⛅</div><div class="tl">21°</div></div><div class="tunti-kohta"><div class="ta">20:00</div><div class="ti">☀️</div><div class="tl">20°</div></div><div class="tunti-kohta"><div class="ta">21:00</div><div class="ti">🌙</div><div class="tl">19°</div></div><div class="tunti-kohta"><div class="ta">22:00</div><div class="ti">🌙</div><div class="tl">17°</div></div><div class="tunti-kohta"><div class="ta">23:00</div><div class="ti">⛅</div><div class="tl">16°</div></div><div class="tunti-kohta"><div class="ta">00:00</div><div class="ti">☁️</div><div class="tl">15°</div></div><div class="tunti-kohta"><div class="ta">01:00</div><div class="ti">⛅</div><div class="tl">14°</div></div><div class="tunti-kohta"><div class="ta">02:00</div><div class="ti">🌙</div><div class="tl">13°</div></div><div class="tunti-kohta"><div class="ta">03:00</div><div class="ti">🌙</div><div class="tl">13°</div></div><div class="tunti-kohta"><div class="ta">04:00</div><div class="ti">🌙</div><div class="tl">13°</div></div><div class="tunti-kohta"><div class="ta">05:00</div><div class="ti">🌙</div><div class="tl">13°</div></div><div class="tunti-kohta"><div class="ta">06:00</div><div class="ti">⛅</div><div class="tl">13°</div></div><div class="tunti-kohta"><div class="ta">07:00</div><div class="ti">⛅</div><div class="tl">14°</div></div><div class="tunti-kohta"><div class="ta">08:00</div><div class="ti">🌤</div><div class="tl">16°</div></div><div class="tunti-kohta"><div class="ta">09:00</div><div class="ti">⛅</div><div class="tl">18°</div></div><div class="tunti-kohta"><div class="ta">10:00</div><div class="ti">⛅</div><div class="tl">19°</div></div><div class="tunti-kohta"><div class="ta">11:00</div><div class="ti">🌤</div><div class="tl">20°</div></div><div class="tunti-kohta"><div class="ta">12:00</div><div class="ti">☀️</div><div class="tl">22°</div></div><div class="tunti-kohta"><div class="ta">13:00</div><div class="ti">🌤</div><div class="tl">23°</div></div><div class="tunti-kohta"><div class="ta">14:00</div><div class="ti">🌤</div><div class="tl">23°</div></div><div class="tunti-kohta"><div class="ta">15:00</div><div class="ti">🌤</div><div class="tl">24°</div></div><div class="tunti-kohta"><div class="ta">16:00</div><div class="ti">☀️</div><div class="tl">24°</div></div></div></div>
+        <div class="tunnit-scroll"><div class="tunnit-lista" id="tunnit-lista"><div class="tunti-kohta nykyinen"><div class="ta">08:00</div><div class="ti">☁️</div><div class="tl">16°</div></div><div class="tunti-kohta"><div class="ta">09:00</div><div class="ti">☁️</div><div class="tl">18°</div></div><div class="tunti-kohta"><div class="ta">10:00</div><div class="ti">⛅</div><div class="tl">19°</div></div><div class="tunti-kohta"><div class="ta">11:00</div><div class="ti">☀️</div><div class="tl">20°</div></div><div class="tunti-kohta"><div class="ta">12:00</div><div class="ti">☀️</div><div class="tl">22°</div></div><div class="tunti-kohta"><div class="ta">13:00</div><div class="ti">⛅</div><div class="tl">23°</div></div><div class="tunti-kohta"><div class="ta">14:00</div><div class="ti">🌤</div><div class="tl">23°</div></div><div class="tunti-kohta"><div class="ta">15:00</div><div class="ti">🌤</div><div class="tl">23°</div></div><div class="tunti-kohta"><div class="ta">16:00</div><div class="ti">🌤</div><div class="tl">24°</div></div><div class="tunti-kohta"><div class="ta">17:00</div><div class="ti">☁️</div><div class="tl">23°</div></div><div class="tunti-kohta"><div class="ta">18:00</div><div class="ti">☁️</div><div class="tl">23°</div></div><div class="tunti-kohta"><div class="ta">19:00</div><div class="ti">☁️</div><div class="tl">22°</div></div><div class="tunti-kohta"><div class="ta">20:00</div><div class="ti">☁️</div><div class="tl">22°</div></div><div class="tunti-kohta"><div class="ta">21:00</div><div class="ti">☁️</div><div class="tl">21°</div></div><div class="tunti-kohta"><div class="ta">22:00</div><div class="ti">🌦</div><div class="tl">20°</div></div><div class="tunti-kohta"><div class="ta">23:00</div><div class="ti">🌦</div><div class="tl">19°</div></div><div class="tunti-kohta"><div class="ta">00:00</div><div class="ti">🌧</div><div class="tl">18°</div></div><div class="tunti-kohta"><div class="ta">01:00</div><div class="ti">🌧</div><div class="tl">17°</div></div><div class="tunti-kohta"><div class="ta">02:00</div><div class="ti">🌧</div><div class="tl">16°</div></div><div class="tunti-kohta"><div class="ta">03:00</div><div class="ti">🌦</div><div class="tl">16°</div></div><div class="tunti-kohta"><div class="ta">04:00</div><div class="ti">🌧</div><div class="tl">15°</div></div><div class="tunti-kohta"><div class="ta">05:00</div><div class="ti">🌦</div><div class="tl">15°</div></div><div class="tunti-kohta"><div class="ta">06:00</div><div class="ti">☁️</div><div class="tl">15°</div></div><div class="tunti-kohta"><div class="ta">07:00</div><div class="ti">⛅</div><div class="tl">15°</div></div></div></div>
       </div>
-      <div id="paivaennuste"><div id="paivat-lista"><div class="paiva-rivi"><div class="pn">Tänään</div><div class="pi">☁️</div><div class="pl"><span class="min">10°</span><span class="max">23°</span></div></div><div class="paiva-rivi"><div class="pn">Huomenna</div><div class="pi">🌧</div><div class="pl"><span class="min">13°</span><span class="max">24°</span></div></div><div class="paiva-rivi"><div class="pn">Ti 11.</div><div class="pi">🌧</div><div class="pl"><span class="min">14°</span><span class="max">20°</span></div></div><div class="paiva-rivi"><div class="pn">Ke 12.</div><div class="pi">☁️</div><div class="pl"><span class="min">12°</span><span class="max">18°</span></div></div><div class="paiva-rivi"><div class="pn">To 13.</div><div class="pi">🌤</div><div class="pl"><span class="min">12°</span><span class="max">18°</span></div></div><div class="paiva-rivi"><div class="pn">Pe 14.</div><div class="pi">☁️</div><div class="pl"><span class="min">12°</span><span class="max">20°</span></div></div><div class="paiva-rivi"><div class="pn">La 15.</div><div class="pi">🌦</div><div class="pl"><span class="min">14°</span><span class="max">24°</span></div></div></div></div>
-      <div id="paivitetty">Päivitetty 16.22</div>
+      <div id="paivaennuste"><div id="paivat-lista"><div class="paiva-rivi"><div class="pn">Tänään</div><div class="pi">🌦</div><div class="pl"><span class="min">13°</span><span class="max">24°</span></div></div><div class="paiva-rivi"><div class="pn">Huomenna</div><div class="pi">🌧</div><div class="pl"><span class="min">13°</span><span class="max">20°</span></div></div><div class="paiva-rivi"><div class="pn">Ke 12.</div><div class="pi">🌦</div><div class="pl"><span class="min">12°</span><span class="max">17°</span></div></div><div class="paiva-rivi"><div class="pn">To 13.</div><div class="pi">☁️</div><div class="pl"><span class="min">11°</span><span class="max">17°</span></div></div><div class="paiva-rivi"><div class="pn">Pe 14.</div><div class="pi">🌦</div><div class="pl"><span class="min">11°</span><span class="max">20°</span></div></div><div class="paiva-rivi"><div class="pn">La 15.</div><div class="pi">🌦</div><div class="pl"><span class="min">14°</span><span class="max">19°</span></div></div><div class="paiva-rivi"><div class="pn">Su 16.</div><div class="pi">☁️</div><div class="pl"><span class="min">15°</span><span class="max">23°</span></div></div></div></div>
+      <div id="paivitetty">Päivitetty 07.01</div>
     </div>
   </div>
 </div>
 
 <script>
+/* ===== SÄÄDATA ===== */
 var SAA_MAP={
   0:{t:'Selkeää',e:'☀️'},1:{t:'Melkein selkeää',e:'🌤'},2:{t:'Puolipilvistä',e:'⛅'},
   3:{t:'Pilvistä',e:'☁️'},45:{t:'Sumuista',e:'🌫'},48:{t:'Jäätävää sumua',e:'🌫'},
@@ -195,99 +196,100 @@ var VRPV=['Su','Ma','Ti','Ke','To','Pe','La'];
 
 function saaTila(k,p){
   var m=SAA_MAP[k]||{t:'Epäselvää',e:'🌡'};
-  if(k===0)return{t:m.t,e:p?'☀️':'🌙'};
-  if(k===1)return{t:m.t,e:p?'🌤':'🌙'};
+  if(k===0||k===1) return{t:m.t,e:p?m.e:'🌙'};
   return m;
 }
-function tuuliSuunta(a){return['P','KP','K','KE','E','LE','L','LP'][Math.round(a/45)%8]}
+function tuuliSuunta(a){return['P','KP','K','KE','E','LE','L','LP'][Math.round(a/45)%8];}
 
-/* ---------- TAUSTAVÄRILIUKUMAT SÄÄKOODIN JA TUNNIN MUKAAN ---------- */
 function taustaSavelma(koodi,tunti){
   var onSade=[51,53,55,61,63,65,80,81,82,95,96,99].indexOf(koodi)>=0;
   var onLumi=[71,73,75,77,85,86].indexOf(koodi)>=0;
   var onPilvi=[2,3,45,48].indexOf(koodi)>=0;
-  if(onSade||onLumi) return ['#1a2434','#2d3a4a','#3d4e62'];
-  if(tunti<5||tunti>=22) return ['#020818','#0d1b3e','#1a2a5e'];
-  if(tunti<9)  return ['#1a3a5c','#3d7ab5','#f0a04b'];
-  if(tunti>=18) return ['#1a0a2e','#6b3fa0','#f4845f'];
-  if(onPilvi)  return ['#2c3e50','#4a5568','#718096'];
-  return ['#1565c0','#1976d2','#42a5f5'];
+  if(onSade||onLumi) return['#1a2434','#2d3a4a','#3d4e62'];
+  if(tunti<5||tunti>=22) return['#020818','#0d1b3e','#1a2a5e'];
+  if(tunti<9) return['#1a3a5c','#3d7ab5','#f0a04b'];
+  if(tunti>=18) return['#1a0a2e','#6b3fa0','#f4845f'];
+  if(onPilvi) return['#2c3e50','#4a5568','#718096'];
+  return['#1565c0','#1976d2','#42a5f5'];
 }
 
-/* ---------- CANVAS ANIMAATIO ---------- */
-var aniData=null;     // {frames:[{aika,ikoni,lampotila,kuvaus,tunti,koodi},...]}
-var aniRAF=null;
-var aniAlku=null;
-var aniKesto=10000;   // 10 sekuntia
-var aniValmis=false;
+/* ===== ANIMAATIO ===== */
+var ANI_KESTO = 10000;
+var aniTimer = null;
+var aniFrames = [];
+var aniKaynnissa = false;
 
 function ohitaAnimaatio(){
-  if(!aniValmis) return;
   lopetaAnimaatio();
 }
 
 function lopetaAnimaatio(){
-  if(aniRAF){cancelAnimationFrame(aniRAF);aniRAF=null;}
-  var ani=document.getElementById('animaatio');
-  var paa=document.getElementById('paasivu');
-  paa.style.display='flex';
-  // Pakota reflow ennen opacity-siirtymää
+  aniKaynnissa = false;
+  if(aniTimer){ clearInterval(aniTimer); aniTimer=null; }
+  if(aniRAF){ cancelAnimationFrame(aniRAF); aniRAF=null; }
+  var ani = document.getElementById('animaatio');
+  var paa = document.getElementById('paasivu');
+  ani.style.transition = 'opacity 0.8s ease';
+  ani.style.opacity = '0';
+  paa.style.display = 'flex';
   void paa.offsetWidth;
-  paa.classList.add('nakyvissa');
-  ani.classList.add('pois');
-  document.body.style.overflow='';
-  setTimeout(function(){ani.style.display='none';},900);
+  paa.style.opacity = '1';
+  setTimeout(function(){ ani.style.display='none'; }, 900);
 }
 
-function kaynnista24hAnimaatio(frames,paikkakunta){
-  aniData=frames;
-  aniValmis=true;
+var aniRAF = null;
 
-  var canvas=document.getElementById('ani-canvas');
-  var ctx=canvas.getContext('2d');
+function kaynnista24hAnimaatio(frames, paikkakunta){
+  if(!frames || frames.length===0){ lopetaAnimaatio(); return; }
+  aniFrames = frames;
+  aniKaynnissa = true;
+
+  var canvas = document.getElementById('ani-canvas');
+  var ctx = canvas.getContext('2d');
+  var W, H;
 
   function resize(){
-    canvas.width=window.innerWidth;
-    canvas.height=window.innerHeight;
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
   }
   resize();
-  window.addEventListener('resize',resize);
-
-  // Piirrä taustan värigradientti
-  function piirraTausta(v1,v2,v3,alpha){
-    var g=ctx.createLinearGradient(0,0,0,canvas.height);
-    g.addColorStop(0,v1);
-    g.addColorStop(0.5,v2);
-    g.addColorStop(1,v3);
-    ctx.globalAlpha=1;
-    ctx.fillStyle=g;
-    ctx.fillRect(0,0,canvas.width,canvas.height);
-  }
+  window.addEventListener('resize', resize);
 
   // Tähdet
   var tahdet=[];
-  for(var i=0;i<80;i++){
-    tahdet.push({x:Math.random(),y:Math.random()*0.6,
-      r:Math.random()*1.5+0.3,op:Math.random(),spd:Math.random()*0.02+0.005});
+  for(var i=0;i<80;i++) tahdet.push({
+    x:Math.random(), y:Math.random()*0.6,
+    r:Math.random()*1.5+0.3, op:Math.random()*0.8+0.1,
+    spd:(Math.random()*0.02+0.005)*(Math.random()>0.5?1:-1)
+  });
+
+  // Sadetipat
+  var tipat=[];
+  for(var i=0;i<60;i++) tipat.push({x:Math.random(), y:Math.random(), spd:Math.random()*0.012+0.008});
+
+  // Lumihiutaleet
+  var lumi=[];
+  for(var i=0;i<50;i++) lumi.push({x:Math.random(), y:Math.random(), spd:Math.random()*0.005+0.002, sw:Math.random()*0.003});
+
+  function piirraTausta(v1,v2,v3){
+    var g=ctx.createLinearGradient(0,0,0,H);
+    g.addColorStop(0,v1); g.addColorStop(0.5,v2); g.addColorStop(1,v3);
+    ctx.globalAlpha=1; ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
   }
+
   function piirraTahdet(alpha){
+    ctx.fillStyle='white';
     for(var i=0;i<tahdet.length;i++){
-      tahdet[i].op+=tahdet[i].spd*(Math.random()>0.5?1:-1);
-      tahdet[i].op=Math.max(0.1,Math.min(0.9,tahdet[i].op));
+      tahdet[i].op+=tahdet[i].spd;
+      if(tahdet[i].op>0.9||tahdet[i].op<0.1) tahdet[i].spd*=-1;
       ctx.globalAlpha=tahdet[i].op*alpha;
-      ctx.fillStyle='white';
       ctx.beginPath();
-      ctx.arc(tahdet[i].x*canvas.width,tahdet[i].y*canvas.height,tahdet[i].r,0,Math.PI*2);
+      ctx.arc(tahdet[i].x*W,tahdet[i].y*H,tahdet[i].r,0,Math.PI*2);
       ctx.fill();
     }
     ctx.globalAlpha=1;
   }
 
-  // Sateen tippoja
-  var tipat=[];
-  for(var i=0;i<60;i++){
-    tipat.push({x:Math.random(),y:Math.random(),spd:Math.random()*0.012+0.008});
-  }
   function piirraSade(alpha){
     ctx.strokeStyle='rgba(174,214,241,'+alpha*0.5+')';
     ctx.lineWidth=1;
@@ -295,17 +297,12 @@ function kaynnista24hAnimaatio(frames,paikkakunta){
       tipat[i].y+=tipat[i].spd;
       if(tipat[i].y>1){tipat[i].y=-0.05;tipat[i].x=Math.random();}
       ctx.beginPath();
-      ctx.moveTo(tipat[i].x*canvas.width,tipat[i].y*canvas.height);
-      ctx.lineTo(tipat[i].x*canvas.width,tipat[i].y*canvas.height+18);
+      ctx.moveTo(tipat[i].x*W, tipat[i].y*H);
+      ctx.lineTo(tipat[i].x*W, tipat[i].y*H+18);
       ctx.stroke();
     }
   }
 
-  // Lumihiutaleita
-  var lumi=[];
-  for(var i=0;i<50;i++){
-    lumi.push({x:Math.random(),y:Math.random(),spd:Math.random()*0.005+0.002,sw:Math.random()*0.003});
-  }
   function piirreLumi(alpha){
     ctx.fillStyle='rgba(220,240,255,'+alpha*0.7+')';
     for(var i=0;i<lumi.length;i++){
@@ -313,143 +310,116 @@ function kaynnista24hAnimaatio(frames,paikkakunta){
       lumi[i].x+=Math.sin(Date.now()*0.001+i)*lumi[i].sw;
       if(lumi[i].y>1){lumi[i].y=-0.02;lumi[i].x=Math.random();}
       ctx.beginPath();
-      ctx.arc(lumi[i].x*canvas.width,lumi[i].y*canvas.height,2,0,Math.PI*2);
+      ctx.arc(lumi[i].x*W,lumi[i].y*H,2,0,Math.PI*2);
       ctx.fill();
     }
   }
 
-  // Lämpötilakäyrä alareunaan
-  function piirraKayra(frames,edistys){
-    var n=frames.length;
-    if(n<2) return;
-    var temps=frames.map(function(f){return f.lampotila;});
-    var tMin=Math.min.apply(null,temps)-2;
-    var tMax=Math.max.apply(null,temps)+2;
-    var W=canvas.width,H=canvas.height;
+  function piirraKayra(edistys){
+    var n=aniFrames.length; if(n<2) return;
+    var temps=aniFrames.map(function(f){return f.lampotila;});
+    var tMin=Math.min.apply(null,temps)-2, tMax=Math.max.apply(null,temps)+2;
     var kayraY=function(t){return H*0.72+((tMax-t)/(tMax-tMin))*(H*0.18);};
 
-    // Täytä alue
     ctx.beginPath();
     ctx.moveTo(0,kayraY(temps[0]));
     for(var i=1;i<n;i++){
-      var x0=(i-1)/(n-1)*W,x1=i/(n-1)*W;
-      var y0=kayraY(temps[i-1]),y1=kayraY(temps[i]);
+      var x0=(i-1)/(n-1)*W, x1=i/(n-1)*W;
       var cx=(x0+x1)/2;
-      ctx.bezierCurveTo(cx,y0,cx,y1,x1,y1);
+      ctx.bezierCurveTo(cx,kayraY(temps[i-1]),cx,kayraY(temps[i]),x1,kayraY(temps[i]));
     }
-    ctx.lineTo(W,H);ctx.lineTo(0,H);ctx.closePath();
+    ctx.lineTo(W,H); ctx.lineTo(0,H); ctx.closePath();
     var g=ctx.createLinearGradient(0,H*0.7,0,H);
-    g.addColorStop(0,'rgba(255,255,255,0.12)');
-    g.addColorStop(1,'rgba(255,255,255,0.02)');
-    ctx.fillStyle=g;ctx.fill();
+    g.addColorStop(0,'rgba(255,255,255,0.12)'); g.addColorStop(1,'rgba(255,255,255,0.02)');
+    ctx.fillStyle=g; ctx.fill();
 
-    // Viiva
     ctx.beginPath();
     ctx.moveTo(0,kayraY(temps[0]));
     for(var i=1;i<n;i++){
-      var x0=(i-1)/(n-1)*W,x1=i/(n-1)*W;
-      var y0=kayraY(temps[i-1]),y1=kayraY(temps[i]);
+      var x0=(i-1)/(n-1)*W, x1=i/(n-1)*W;
       var cx=(x0+x1)/2;
-      ctx.bezierCurveTo(cx,y0,cx,y1,x1,y1);
+      ctx.bezierCurveTo(cx,kayraY(temps[i-1]),cx,kayraY(temps[i]),x1,kayraY(temps[i]));
     }
-    ctx.strokeStyle='rgba(255,255,255,0.4)';ctx.lineWidth=2;ctx.stroke();
+    ctx.strokeStyle='rgba(255,255,255,0.4)'; ctx.lineWidth=2; ctx.stroke();
 
-    // Nykyinen piste (edistys 0–1 = tunti 0–n)
-    var pos=edistys*(n-1);
-    var idx=Math.floor(pos);var frac=pos-idx;
-    if(idx>=n-1){idx=n-2;frac=1;}
-    var px=pos/(n-1)*W;
-    var py=kayraY(temps[idx]*(1-frac)+temps[Math.min(idx+1,n-1)]*frac);
-
-    // Aika-akseli: tuntimerkit
-    for(var i=0;i<n;i++){
-      var x=i/(n-1)*W;
-      ctx.globalAlpha=0.3;
-      ctx.fillStyle='white';
-      ctx.font='10px Inter,sans-serif';
-      ctx.textAlign='center';
-      if(i%3===0) ctx.fillText(String(frames[i].tunti).padStart(2,'0'),x,H-8);
+    // Aika-akseli
+    ctx.globalAlpha=0.3; ctx.fillStyle='white'; ctx.font='10px Inter,sans-serif'; ctx.textAlign='center';
+    for(var i=0;i<n;i+=3){
+      ctx.fillText(String(aniFrames[i].tunti).padStart(2,'0'), i/(n-1)*W, H-8);
     }
     ctx.globalAlpha=1;
 
     // Liikkuva piste
-    ctx.beginPath();
-    ctx.arc(px,py,6,0,Math.PI*2);
-    ctx.fillStyle='white';ctx.fill();
-    ctx.beginPath();
-    ctx.arc(px,py,3,0,Math.PI*2);
-    ctx.fillStyle='rgba(100,180,255,1)';ctx.fill();
+    var pos=edistys*(n-1);
+    var idx=Math.min(Math.floor(pos),n-2);
+    var frac=pos-idx;
+    var px=pos/(n-1)*W;
+    var py=kayraY(temps[idx]*(1-frac)+temps[idx+1]*frac);
+    ctx.beginPath(); ctx.arc(px,py,6,0,Math.PI*2); ctx.fillStyle='white'; ctx.fill();
+    ctx.beginPath(); ctx.arc(px,py,3,0,Math.PI*2); ctx.fillStyle='rgba(100,180,255,1)'; ctx.fill();
   }
 
-  var edellinenFrameIdx=-1;
+  // Aseta paikkakunta ja ensimmäinen frame heti
+  document.getElementById('ani-paikkakunta').textContent = paikkakunta||'';
+  var f0=aniFrames[0];
+  document.getElementById('ani-aika').textContent = String(f0.tunti).padStart(2,'0')+':00';
+  document.getElementById('ani-ikoni').textContent = f0.ikoni;
+  document.getElementById('ani-lampotila').textContent = f0.lampotila+'°C';
+  document.getElementById('ani-kuvaus').textContent = f0.kuvaus;
 
-  function animate(ts){
-    if(!aniAlku) aniAlku=ts;
-    var elapsed=ts-aniAlku;
-    var edistys=Math.min(elapsed/aniKesto,1);
+  var alkuMs = Date.now();
+  var edellinenFrameIdx = -1;
 
-    var frameIdx=Math.min(Math.floor(edistys*aniData.length),aniData.length-1);
-    var frame=aniData[frameIdx];
+  function animate(){
+    if(!aniKaynnissa) return;
+    var elapsed = Date.now() - alkuMs;
+    var edistys = Math.min(elapsed / ANI_KESTO, 1);
+    var frameIdx = Math.min(Math.floor(edistys * aniFrames.length), aniFrames.length-1);
+    var frame = aniFrames[frameIdx];
 
-    // Tausta
-    var savelma=taustaSavelma(frame.koodi,frame.tunti);
-    piirraTausta(savelma[0],savelma[1],savelma[2]);
+    // Piirrä tausta
+    var sv = taustaSavelma(frame.koodi, frame.tunti);
+    piirraTausta(sv[0],sv[1],sv[2]);
 
-    // Erikoistehosteet
-    var onYo=frame.tunti<5||frame.tunti>=22;
-    var onSade=[51,53,55,61,63,65,80,81,82,95,96,99].indexOf(frame.koodi)>=0;
-    var onLumi=[71,73,75,77,85,86].indexOf(frame.koodi)>=0;
+    // Tehosteet
+    var onYo = frame.tunti<5||frame.tunti>=22;
+    var onSade = [51,53,55,61,63,65,80,81,82,95,96,99].indexOf(frame.koodi)>=0;
+    var onLumi = [71,73,75,77,85,86].indexOf(frame.koodi)>=0;
     if(onYo&&!onSade) piirraTahdet(1);
     if(onSade) piirraSade(1);
     if(onLumi) piirreLumi(1);
 
-    // Lämpötilakäyrä
-    piirraKayra(aniData,edistys);
+    piirraKayra(edistys);
 
-    // Päivitä teksti jos tunti vaihtui
+    // Päivitä teksti
     if(frameIdx!==edellinenFrameIdx){
       edellinenFrameIdx=frameIdx;
-      var el=document.getElementById('ani-ikoni');
-      el.style.opacity='0';el.style.transform='scale(0.7)';
-      setTimeout(function(){
-        document.getElementById('ani-aika').textContent=String(frame.tunti).padStart(2,'0')+':00';
-        document.getElementById('ani-ikoni').textContent=frame.ikoni;
-        document.getElementById('ani-lampotila').textContent=frame.lampotila+'°C';
-        document.getElementById('ani-kuvaus').textContent=frame.kuvaus;
-        var el2=document.getElementById('ani-ikoni');
-        el2.style.opacity='1';el2.style.transform='scale(1)';
-      },150);
+      document.getElementById('ani-aika').textContent = String(frame.tunti).padStart(2,'0')+':00';
+      document.getElementById('ani-ikoni').textContent = frame.ikoni;
+      document.getElementById('ani-lampotila').textContent = frame.lampotila+'°C';
+      document.getElementById('ani-kuvaus').textContent = frame.kuvaus;
     }
 
-    // Edistymispalkki
-    document.getElementById('ani-palkki').style.width=(edistys*100)+'%';
+    document.getElementById('ani-palkki').style.width = (edistys*100)+'%';
 
     if(edistys<1){
-      aniRAF=requestAnimationFrame(animate);
+      aniRAF = requestAnimationFrame(animate);
     } else {
       lopetaAnimaatio();
     }
   }
 
-  // Aseta ensimmäinen frame heti
-  document.getElementById('ani-paikkakunta').textContent=paikkakunta||'';
-  var f0=aniData[0];
-  document.getElementById('ani-aika').textContent=String(f0.tunti).padStart(2,'0')+':00';
-  document.getElementById('ani-ikoni').textContent=f0.ikoni;
-  document.getElementById('ani-lampotila').textContent=f0.lampotila+'°C';
-  document.getElementById('ani-kuvaus').textContent=f0.kuvaus;
-
-  aniRAF=requestAnimationFrame(animate);
+  aniRAF = requestAnimationFrame(animate);
 }
 
-/* ---------- TAUSTAN ASETUS PÄÄSIVULLE ---------- */
+/* ===== PÄÄSIVU TAUSTA ===== */
 function asetaTausta(k,h){
   document.body.className='';
-  var rain=document.getElementById('rain'),stars=document.getElementById('stars');
+  var rain=document.getElementById('rain'), stars=document.getElementById('stars');
   var onSade=[51,53,55,61,63,65,80,81,82,95,96,99].indexOf(k)>=0;
   var onLumi=[71,73,75,77,85,86].indexOf(k)>=0;
   var onPilvi=[2,3,45,48].indexOf(k)>=0;
-  var onYo=h<5||h>=22,onAamu=h>=5&&h<9,onIlta=h>=18&&h<22;
+  var onYo=h<5||h>=22, onAamu=h>=5&&h<9, onIlta=h>=18&&h<22;
   if(onSade||onLumi){document.body.classList.add('sky-sade');rain.style.display='block';lataaSateet();}
   else rain.style.display='none';
   if(!onSade&&!onLumi){
@@ -481,16 +451,16 @@ function luoTahdet(){
   }
 }
 
-/* ---------- API ---------- */
+/* ===== API ===== */
 function apiFetch(url,cb,errCb){
   var bust=Math.floor(Date.now()/60000);
-  var urlFresh=url+(url.indexOf('?')>=0?'&':'?')+'_cb='+bust;
+  var u=url+(url.indexOf('?')>=0?'&':'?')+'_cb='+bust;
   if(window.fetch){
-    fetch(urlFresh,{cache:'no-store'}).then(function(r){return r.json();}).then(cb).catch(errCb);
+    fetch(u,{cache:'no-store'}).then(function(r){return r.json();}).then(cb).catch(errCb);
   } else {
     var xhr=new XMLHttpRequest();
-    xhr.open('GET',urlFresh);
-    xhr.setRequestHeader('Cache-Control','no-cache, no-store');
+    xhr.open('GET',u);
+    xhr.setRequestHeader('Cache-Control','no-cache,no-store');
     xhr.timeout=12000;
     xhr.onload=function(){if(xhr.status>=200&&xhr.status<300){try{cb(JSON.parse(xhr.responseText));}catch(e){errCb(e);}}else{errCb(new Error('HTTP '+xhr.status));}};
     xhr.onerror=function(){errCb(new Error('Verkkovirhe'));};
@@ -508,45 +478,55 @@ function naytaVirhe(viesti,details){
   document.getElementById('virhe-details').textContent=details||'';
 }
 
-function haeOpenMeteo(lat,lon,paikkaNimi){
+function haeOpenMeteo(lat,lon,paikka){
   var base='https://api.open-meteo.com/v1/forecast?latitude='+lat+'&longitude='+lon+'&wind_speed_unit=ms&timezone=auto';
-  var url=base+'&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m,wind_direction_10m,is_day&hourly=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum&forecast_days=2';
-  var urlDaily=base+'&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum&forecast_days=7';
-  apiFetch(url,function(d){
-    apiFetch(urlDaily,function(d7){d.daily=d7.daily;naytaSaa(d,paikkaNimi);},function(){naytaSaa(d,paikkaNimi);});
-  },function(e){naytaVirhe('Säätietojen haku epäonnistui.',e&&e.message?e.message:'');});
+  apiFetch(
+    base+'&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m,wind_direction_10m,is_day&hourly=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum&forecast_days=2',
+    function(d){
+      apiFetch(
+        base+'&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum&forecast_days=7',
+        function(d7){d.daily=d7.daily; naytaSaa(d,paikka);},
+        function(){naytaSaa(d,paikka);}
+      );
+    },
+    function(e){naytaVirhe('Säätietojen haku epäonnistui.',e&&e.message?e.message:'');}
+  );
 }
 
 function haeSijaintiNimi(lat,lon,cb){
   apiFetch('https://api.bigdatacloud.net/data/reverse-geocode-client?latitude='+lat+'&longitude='+lon+'&localityLanguage=fi',
     function(g){cb(g.city||g.locality||g.principalSubdivision||'Sijaintisi');},
-    function(){cb('Sijaintisi');});
+    function(){cb('Sijaintisi');}
+  );
 }
 
 function haeSaa(){
+  // Näytä animaatio heti – säädata täyttää sen taustalla
+  var ani=document.getElementById('animaatio');
+  ani.style.display='flex';
+  ani.style.opacity='1';
+  document.getElementById('paasivu').style.display='none';
+  document.getElementById('paasivu').style.opacity='0';
   document.getElementById('lataus').style.display='block';
   document.getElementById('virhe').style.display='none';
   document.getElementById('saa-sisalto').style.display='none';
-  document.getElementById('lataus-teksti').textContent='Haetaan sijaintia…';
+
   if(!navigator.geolocation){
     haeSijaintiNimi(60.1699,24.9384,function(n){haeOpenMeteo(60.1699,24.9384,n);});
     return;
   }
   navigator.geolocation.getCurrentPosition(
-    function(pos){
-      haeSijaintiNimi(pos.coords.latitude,pos.coords.longitude,function(n){haeOpenMeteo(pos.coords.latitude,pos.coords.longitude,n);});
-    },
+    function(pos){haeSijaintiNimi(pos.coords.latitude,pos.coords.longitude,function(n){haeOpenMeteo(pos.coords.latitude,pos.coords.longitude,n);});},
     function(){haeSijaintiNimi(60.1699,24.9384,function(n){haeOpenMeteo(60.1699,24.9384,n);});},
     {timeout:10000,maximumAge:60000}
   );
 }
 
 function naytaSaa(d,paikka){
-  var c=d.current,nyt=new Date(),h=nyt.getHours(),onP=c.is_day===1;
+  var c=d.current, nyt=new Date(), h=nyt.getHours(), onP=c.is_day===1;
   var tila=saaTila(c.weather_code,onP);
   asetaTausta(c.weather_code,h);
 
-  // Täytä pääsivu
   document.getElementById('paikka-nimi').textContent=paikka;
   document.getElementById('lampotila-iso').innerHTML=Math.round(c.temperature_2m)+'<sup>°C</sup>';
   document.getElementById('saatila-teksti').textContent=tila.t;
@@ -558,44 +538,34 @@ function naytaSaa(d,paikka){
   var sade=d.daily&&d.daily.precipitation_sum?d.daily.precipitation_sum[0]:0;
   document.getElementById('sade').textContent=(sade||0).toFixed(1)+' mm';
 
-  // Tunnit
-  var nytISO=nyt.getFullYear()+'-'+String(nyt.getMonth()+1).padStart(2,'0')+'-'+String(nyt.getDate()).padStart(2,'0')+'T'+String(nyt.getHours()).padStart(2,'0')+':00';
+  var nytISO=nyt.getFullYear()+'-'+String(nyt.getMonth()+1).padStart(2,'0')+'-'+String(nyt.getDate()).padStart(2,'0')+'T'+String(h).padStart(2,'0')+':00';
   var alku=0;
   for(var i=0;i<d.hourly.time.length;i++){if(d.hourly.time[i]>nytISO){alku=i;break;}}
+
   var tunnit=document.getElementById('tunnit-lista');tunnit.innerHTML='';
-
-  // Kerää myös animaatioframet
-  var aniFrames=[];
-
+  var frames=[];
   for(var i=0;i<24&&(alku+i)<d.hourly.time.length;i++){
     var idx=alku+i;
     var aikaStr=d.hourly.time[idx];
     var hh=parseInt(aikaStr.slice(11,13),10);
-    var klo=String(hh).padStart(2,'0')+':00';
     var lamp=Math.round(d.hourly.temperature_2m[idx]);
     var koodi=d.hourly.weather_code[idx];
     var onPaiva=hh>=6&&hh<21;
-    var emo=saaTila(koodi,onPaiva).e;
-    var kuvaus=saaTila(koodi,onPaiva).t;
-
-    // Tuntilista pääsivulle
+    var st=saaTila(koodi,onPaiva);
+    frames.push({tunti:hh,ikoni:st.e,lampotila:lamp,kuvaus:st.t,koodi:koodi});
     var el=document.createElement('div');el.className='tunti-kohta'+(i===0?' nykyinen':'');
-    el.innerHTML='<div class="ta">'+klo+'</div><div class="ti">'+emo+'</div><div class="tl">'+lamp+'°</div>';
+    el.innerHTML='<div class="ta">'+String(hh).padStart(2,'0')+':00</div><div class="ti">'+st.e+'</div><div class="tl">'+lamp+'°</div>';
     tunnit.appendChild(el);
-
-    // Animaatioframe
-    aniFrames.push({tunti:hh,ikoni:emo,lampotila:lamp,kuvaus:kuvaus,koodi:koodi});
   }
 
-  // Päiväennuste
   var paivat=document.getElementById('paivat-lista');paivat.innerHTML='';
   for(var i=0;i<d.daily.time.length;i++){
     var pp=new Date(d.daily.time[i]+'T12:00:00');
     var nimi=i===0?'Tänään':i===1?'Huomenna':VRPV[pp.getDay()]+' '+pp.getDate()+'.';
-    var emo=saaTila(d.daily.weather_code[i],true).e;
+    var st=saaTila(d.daily.weather_code[i],true);
     var min=Math.round(d.daily.temperature_2m_min[i]),max=Math.round(d.daily.temperature_2m_max[i]);
     var el=document.createElement('div');el.className='paiva-rivi';
-    el.innerHTML='<div class="pn">'+nimi+'</div><div class="pi">'+emo+'</div><div class="pl"><span class="min">'+min+'°</span><span class="max">'+max+'°</span></div>';
+    el.innerHTML='<div class="pn">'+nimi+'</div><div class="pi">'+st.e+'</div><div class="pl"><span class="min">'+min+'°</span><span class="max">'+max+'°</span></div>';
     paivat.appendChild(el);
   }
 
@@ -604,8 +574,8 @@ function naytaSaa(d,paikka){
   document.getElementById('lataus').style.display='none';
   document.getElementById('saa-sisalto').style.display='block';
 
-  // Käynnistä animaatio
-  if(aniFrames.length>0) kaynnista24hAnimaatio(aniFrames,paikka);
+  // Käynnistä animaatio – pääsivu on jo täytetty taustalla
+  if(frames.length>0) kaynnista24hAnimaatio(frames,paikka);
   else lopetaAnimaatio();
 }
 
