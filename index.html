@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0048)file:///C:/Users/jaria/Downloads/saa%20(19).html -->
+<!-- saved from url=(0048)file:///C:/Users/jaria/Downloads/saa%20(20).html -->
 <html lang="fi"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -18,9 +18,10 @@
     align-items:center;justify-content:center;background:#0a1628;
     transition:opacity .8s ease;overflow:hidden}
   #animaatio.pois{opacity:0;pointer-events:none}
-  #ani-canvas{position:absolute;inset:0;width:100%;height:100%}
+  #ani-canvas{position:absolute;inset:0;width:100%;height:100%;display:none}
+  #ani-overlay{position:relative;z-index:2;text-align:center;pointer-events:none;display:none}
+  #ani-edistyminen-wrap{position:absolute;bottom:0;left:0;right:0;display:none}
 
-  #ani-overlay{position:relative;z-index:2;text-align:center;pointer-events:none}
   #ani-paikkakunta{font-family:'Space Grotesk',sans-serif;font-size:clamp(18px,5vw,26px);
     font-weight:500;color:rgba(255,255,255,.75);letter-spacing:.12em;text-transform:uppercase;
     margin-bottom:14px;text-shadow:0 2px 16px rgba(0,0,0,.5)}
@@ -34,10 +35,10 @@
   #ani-kuvaus{font-size:clamp(14px,4vw,18px);font-weight:300;
     color:rgba(255,255,255,.65);margin-top:6px;letter-spacing:.04em}
 
-  #ani-edistyminen{position:absolute;bottom:0;left:0;right:0;height:3px;background:rgba(255,255,255,.15)}
+  #ani-edistyminen{height:3px;background:rgba(255,255,255,.15)}
   #ani-palkki{height:100%;background:rgba(255,255,255,.7);width:0%;transition:width .1s linear;border-radius:0 2px 2px 0}
 
-  #ani-ohita{position:absolute;bottom:32px;right:24px;
+  #ani-ohita{display:none;position:absolute;bottom:32px;right:24px;
     font-size:13px;color:rgba(255,255,255,.45);cursor:pointer;
     border:1px solid rgba(255,255,255,.2);border-radius:20px;
     padding:7px 18px;background:rgba(255,255,255,.06);
@@ -126,20 +127,20 @@
   #saa-sisalto{display:none}
 </style>
 </head>
-<body class="sky-ilta">
+<body class="sky-pilvi">
 
 <!-- Animaationäyttö -->
 <div id="animaatio" style="display: none; opacity: 0; transition: opacity 0.8s;">
-  <canvas id="ani-canvas" width="1536" height="695"></canvas>
-  <div id="ani-overlay">
+  <canvas id="ani-canvas" width="1536" height="695" style="display: block;"></canvas>
+  <div id="ani-overlay" style="display: block;">
     <div id="ani-paikkakunta">Lappeenranta</div>
-    <div id="ani-aika">19:00</div>
-    <div id="ani-ikoni">🌧</div>
-    <div id="ani-lampotila">17°C</div>
-    <div id="ani-kuvaus">Voimakasta tihkua</div>
+    <div id="ani-aika">17:00</div>
+    <div id="ani-ikoni">☀️</div>
+    <div id="ani-lampotila">19°C</div>
+    <div id="ani-kuvaus">Selkeää</div>
   </div>
-  <div id="ani-edistyminen"><div id="ani-palkki" style="width: 100%;"></div></div>
-  <div id="ani-ohita" onclick="ohitaAnimaatio()">Ohita ›</div>
+  <div id="ani-edistyminen-wrap" style="display: block;"><div id="ani-edistyminen"><div id="ani-palkki" style="width: 100%;"></div></div></div>
+  <div id="ani-ohita" onclick="ohitaAnimaatio()" style="display: block;">Ohita ›</div>
 </div>
 
 <!-- Pääsivu -->
@@ -160,22 +161,22 @@
     <div id="saa-sisalto" style="display: block;">
       <header>
         <div id="sijainti-rivi" onclick="haeSaa()">📍 <span id="paikka-nimi">Lappeenranta</span></div>
-        <div id="saatila-ikoni">🌤</div>
+        <div id="saatila-ikoni">⛅</div>
         <div id="lampotila-iso">16<sup>°C</sup></div>
-        <div id="saatila-teksti">Melkein selkeää</div>
+        <div id="saatila-teksti">Puolipilvistä</div>
       </header>
       <div id="kortit">
         <div class="kortti"><div class="ko">Tuntuu kuin</div><div class="kv" id="tuntuu-kuin">12°</div><div class="ky">celsiusta</div></div>
-        <div class="kortti"><div class="ko">Kosteus</div><div class="kv" id="kosteus">59%</div><div class="ky">suhteellinen</div></div>
-        <div class="kortti"><div class="ko">Tuuli</div><div class="kv" id="tuuli">6.6 m/s</div><div class="ky" id="tuuli-suunta">LP</div></div>
-        <div class="kortti"><div class="ko">Sadesumma</div><div class="kv" id="sade">7.4 mm</div><div class="ky">mm tänään</div></div>
+        <div class="kortti"><div class="ko">Kosteus</div><div class="kv" id="kosteus">52%</div><div class="ky">suhteellinen</div></div>
+        <div class="kortti"><div class="ko">Tuuli</div><div class="kv" id="tuuli">4.6 m/s</div><div class="ky" id="tuuli-suunta">L</div></div>
+        <div class="kortti"><div class="ko">Sadesumma</div><div class="kv" id="sade">3.4 mm</div><div class="ky">mm tänään</div></div>
       </div>
       <div id="tuntiennuste">
         <div class="ko" style="margin-bottom:10px;padding:0 4px">Tuntikohtainen</div>
-        <div class="tunnit-scroll"><div class="tunnit-lista" id="tunnit-lista"><div class="tunti-kohta nykyinen"><div class="ta">20:00</div><div class="ti">🌤</div><div class="tl">16°</div></div><div class="tunti-kohta"><div class="ta">21:00</div><div class="ti">🌙</div><div class="tl">15°</div></div><div class="tunti-kohta"><div class="ta">22:00</div><div class="ti">🌙</div><div class="tl">14°</div></div><div class="tunti-kohta"><div class="ta">23:00</div><div class="ti">🌙</div><div class="tl">13°</div></div><div class="tunti-kohta"><div class="ta">00:00</div><div class="ti">🌙</div><div class="tl">13°</div></div><div class="tunti-kohta"><div class="ta">01:00</div><div class="ti">🌙</div><div class="tl">13°</div></div><div class="tunti-kohta"><div class="ta">02:00</div><div class="ti">🌙</div><div class="tl">13°</div></div><div class="tunti-kohta"><div class="ta">03:00</div><div class="ti">🌙</div><div class="tl">13°</div></div><div class="tunti-kohta"><div class="ta">04:00</div><div class="ti">🌙</div><div class="tl">12°</div></div><div class="tunti-kohta"><div class="ta">05:00</div><div class="ti">🌙</div><div class="tl">12°</div></div><div class="tunti-kohta"><div class="ta">06:00</div><div class="ti">🌤</div><div class="tl">12°</div></div><div class="tunti-kohta"><div class="ta">07:00</div><div class="ti">☀️</div><div class="tl">13°</div></div><div class="tunti-kohta"><div class="ta">08:00</div><div class="ti">☀️</div><div class="tl">14°</div></div><div class="tunti-kohta"><div class="ta">09:00</div><div class="ti">☀️</div><div class="tl">15°</div></div><div class="tunti-kohta"><div class="ta">10:00</div><div class="ti">☀️</div><div class="tl">16°</div></div><div class="tunti-kohta"><div class="ta">11:00</div><div class="ti">⛅</div><div class="tl">17°</div></div><div class="tunti-kohta"><div class="ta">12:00</div><div class="ti">☁️</div><div class="tl">18°</div></div><div class="tunti-kohta"><div class="ta">13:00</div><div class="ti">⛅</div><div class="tl">18°</div></div><div class="tunti-kohta"><div class="ta">14:00</div><div class="ti">⛅</div><div class="tl">19°</div></div><div class="tunti-kohta"><div class="ta">15:00</div><div class="ti">⛅</div><div class="tl">19°</div></div><div class="tunti-kohta"><div class="ta">16:00</div><div class="ti">☁️</div><div class="tl">19°</div></div><div class="tunti-kohta"><div class="ta">17:00</div><div class="ti">☁️</div><div class="tl">19°</div></div><div class="tunti-kohta"><div class="ta">18:00</div><div class="ti">☁️</div><div class="tl">18°</div></div><div class="tunti-kohta"><div class="ta">19:00</div><div class="ti">🌧</div><div class="tl">17°</div></div></div></div>
+        <div class="tunnit-scroll"><div class="tunnit-lista" id="tunnit-lista"><div class="tunti-kohta nykyinen"><div class="ta">18:00</div><div class="ti">🌦</div><div class="tl">16°</div></div><div class="tunti-kohta"><div class="ta">19:00</div><div class="ti">🌧</div><div class="tl">14°</div></div><div class="tunti-kohta"><div class="ta">20:00</div><div class="ti">⛅</div><div class="tl">14°</div></div><div class="tunti-kohta"><div class="ta">21:00</div><div class="ti">⛅</div><div class="tl">13°</div></div><div class="tunti-kohta"><div class="ta">22:00</div><div class="ti">⛅</div><div class="tl">13°</div></div><div class="tunti-kohta"><div class="ta">23:00</div><div class="ti">🌙</div><div class="tl">13°</div></div><div class="tunti-kohta"><div class="ta">00:00</div><div class="ti">🌙</div><div class="tl">12°</div></div><div class="tunti-kohta"><div class="ta">01:00</div><div class="ti">🌙</div><div class="tl">12°</div></div><div class="tunti-kohta"><div class="ta">02:00</div><div class="ti">🌙</div><div class="tl">12°</div></div><div class="tunti-kohta"><div class="ta">03:00</div><div class="ti">🌙</div><div class="tl">11°</div></div><div class="tunti-kohta"><div class="ta">04:00</div><div class="ti">🌙</div><div class="tl">11°</div></div><div class="tunti-kohta"><div class="ta">05:00</div><div class="ti">🌙</div><div class="tl">10°</div></div><div class="tunti-kohta"><div class="ta">06:00</div><div class="ti">☀️</div><div class="tl">10°</div></div><div class="tunti-kohta"><div class="ta">07:00</div><div class="ti">☀️</div><div class="tl">11°</div></div><div class="tunti-kohta"><div class="ta">08:00</div><div class="ti">☀️</div><div class="tl">12°</div></div><div class="tunti-kohta"><div class="ta">09:00</div><div class="ti">☀️</div><div class="tl">13°</div></div><div class="tunti-kohta"><div class="ta">10:00</div><div class="ti">☀️</div><div class="tl">14°</div></div><div class="tunti-kohta"><div class="ta">11:00</div><div class="ti">☀️</div><div class="tl">15°</div></div><div class="tunti-kohta"><div class="ta">12:00</div><div class="ti">🌤</div><div class="tl">16°</div></div><div class="tunti-kohta"><div class="ta">13:00</div><div class="ti">🌤</div><div class="tl">17°</div></div><div class="tunti-kohta"><div class="ta">14:00</div><div class="ti">🌤</div><div class="tl">17°</div></div><div class="tunti-kohta"><div class="ta">15:00</div><div class="ti">🌤</div><div class="tl">18°</div></div><div class="tunti-kohta"><div class="ta">16:00</div><div class="ti">☀️</div><div class="tl">19°</div></div><div class="tunti-kohta"><div class="ta">17:00</div><div class="ti">☀️</div><div class="tl">19°</div></div></div></div>
       </div>
-      <div id="paivaennuste"><div id="paivat-lista"><div class="paiva-rivi"><div class="pn">Tänään</div><div class="pi">🌧</div><div class="pl"><span class="min">13°</span><span class="max">21°</span></div></div><div class="paiva-rivi"><div class="pn">Huomenna</div><div class="pi">🌧</div><div class="pl"><span class="min">12°</span><span class="max">19°</span></div></div><div class="paiva-rivi"><div class="pn">To 13.</div><div class="pi">⛅</div><div class="pl"><span class="min">11°</span><span class="max">20°</span></div></div><div class="paiva-rivi"><div class="pn">Pe 14.</div><div class="pi">☁️</div><div class="pl"><span class="min">11°</span><span class="max">19°</span></div></div><div class="paiva-rivi"><div class="pn">La 15.</div><div class="pi">🌦</div><div class="pl"><span class="min">14°</span><span class="max">21°</span></div></div><div class="paiva-rivi"><div class="pn">Su 16.</div><div class="pi">☁️</div><div class="pl"><span class="min">14°</span><span class="max">22°</span></div></div><div class="paiva-rivi"><div class="pn">Ma 17.</div><div class="pi">🌦</div><div class="pl"><span class="min">15°</span><span class="max">20°</span></div></div></div></div>
-      <div id="paivitetty">Päivitetty 19.58</div>
+      <div id="paivaennuste"><div id="paivat-lista"><div class="paiva-rivi"><div class="pn">Tänään</div><div class="pi">🌧</div><div class="pl"><span class="min">11°</span><span class="max">19°</span></div></div><div class="paiva-rivi"><div class="pn">Huomenna</div><div class="pi">🌤</div><div class="pl"><span class="min">10°</span><span class="max">19°</span></div></div><div class="paiva-rivi"><div class="pn">Pe 14.</div><div class="pi">☁️</div><div class="pl"><span class="min">11°</span><span class="max">20°</span></div></div><div class="paiva-rivi"><div class="pn">La 15.</div><div class="pi">🌦</div><div class="pl"><span class="min">14°</span><span class="max">19°</span></div></div><div class="paiva-rivi"><div class="pn">Su 16.</div><div class="pi">🌦</div><div class="pl"><span class="min">14°</span><span class="max">19°</span></div></div><div class="paiva-rivi"><div class="pn">Ma 17.</div><div class="pi">🌦</div><div class="pl"><span class="min">13°</span><span class="max">20°</span></div></div><div class="paiva-rivi"><div class="pn">Ti 18.</div><div class="pi">☁️</div><div class="pl"><span class="min">12°</span><span class="max">20°</span></div></div></div></div>
+      <div id="paivitetty">Päivitetty 17.05</div>
     </div>
   </div>
 </div>
@@ -358,6 +359,12 @@ function kaynnista24hAnimaatio(frames, paikkakunta){
     ctx.beginPath(); ctx.arc(px,py,6,0,Math.PI*2); ctx.fillStyle='white'; ctx.fill();
     ctx.beginPath(); ctx.arc(px,py,3,0,Math.PI*2); ctx.fillStyle='rgba(100,180,255,1)'; ctx.fill();
   }
+
+  // Näytä animaation sisältö vasta nyt kun data on saapunut
+  document.getElementById('ani-canvas').style.display='block';
+  document.getElementById('ani-overlay').style.display='block';
+  document.getElementById('ani-edistyminen-wrap').style.display='block';
+  document.getElementById('ani-ohita').style.display='block';
 
   // Aseta paikkakunta ja ensimmäinen frame heti
   document.getElementById('ani-paikkakunta').textContent = paikkakunta||'';
