@@ -35,8 +35,9 @@
     text-shadow:0 2px 40px rgba(0,0,0,.6);margin-bottom:8px}
   #ani-ikoni{font-size:clamp(48px,14vw,80px);line-height:1.2;margin-bottom:8px;
     transition:transform .3s ease,opacity .3s ease}
-  #ani-lampotila{font-family:'Space Grotesk',sans-serif;font-size:clamp(32px,9vw,52px);
-    font-weight:300;color:rgba(255,255,255,.9);letter-spacing:-1px}
+  #ani-lampotila{font-family:'Space Grotesk',sans-serif;font-size:clamp(52px,14vw,88px);
+    font-weight:700;color:#fff;letter-spacing:-3px;line-height:1;
+    text-shadow:0 2px 32px rgba(0,0,0,.35)}
   #ani-kuvaus{font-size:clamp(14px,4vw,18px);font-weight:300;
     color:rgba(255,255,255,.65);margin-top:6px;letter-spacing:.04em}
 
@@ -401,7 +402,7 @@ function aniStep(){
   // T=0.55 ajalla saavutetaan 6/24 = 0.25 frameista (6 ensimmäistä tuntia).
   // Alku (t<T): lineaarinen nopeus v0 = 0.25/0.55
   // Loppu (t>=T): kvadraattinen kiihtyvyys, sama derivaatta yhtymäkohdassa.
-  var T  = 0.55;
+  var T  = 0.45;
   var fT = 4 / Math.max(aniFrames.length, 1);
   var v0 = fT / T;
   var acc = 2 * (1 - fT - v0 * (1 - T)) / ((1 - T) * (1 - T));
